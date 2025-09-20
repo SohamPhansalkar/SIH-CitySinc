@@ -1,0 +1,272 @@
+/* Define color variables for light and dark themes */
+:root {
+  --header-bg: rgb(13, 13, 92);
+  --header-text: aliceblue;
+  --page-bg: #f0f2f5;
+  --uploader-bg: #fff;
+  --uploader-border: #000;
+  --input-bg: #fff;
+  --input-text: #212529;
+  --input-border: #dee2e6;
+}
+
+body.dark-mode {
+  --header-bg: #1e1e1e;
+  --header-text: #e0e0e0;
+  --page-bg: #121212;
+  --uploader-bg: #2a2a2a;
+  --uploader-border: #555;
+  --input-bg: #2a2a2a;
+  --input-text: #e0e0e0;
+  --input-border: #555;
+}
+
+body {
+  background-color: var(--page-bg);
+  transition: background-color 0.3s ease;
+}
+
+/* START: Style for the theme toggle button */
+.theme-toggle-container {
+  text-align: left;
+  padding: 10px;
+  display: inline-block;
+  margin-right: 50px;
+}
+
+#theme-toggle {
+  background: var(--header-bg);
+  color: var(--header-text);
+  border: 1px solid var(--uploader-border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* END: Style for the theme toggle button */
+
+.p {
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.title {
+  text-align: center;
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  font-weight: bold;
+  padding-top: 5px;
+  font-size: 25px;
+  margin-bottom: 0px;
+}
+
+.description {
+  text-align: center;
+  font-size: 15px;
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.user-info {
+  font-weight: 700;
+  text-align: center;
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+.key-btn {
+  margin: 5px;
+  margin-bottom: 15px;
+}
+
+.images-1 {
+  width: 720px;
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.keywords-1 {
+  background-color: white;
+  color: rgb(13, 13, 92);
+  border-radius: 15px;
+  padding: 10px;
+  border-width: 1px;
+  border: solid;
+  margin: 5px;
+}
+
+.keywords-2 {
+  background-color: white;
+  color: rgb(13, 13, 92);
+  border-radius: 15px;
+  padding: 10px;
+  border-width: 1px;
+  border: solid;
+  margin: 5px;
+}
+
+.keywords-3 {
+  background-color: white;
+  color: rgb(13, 13, 92);
+  border-radius: 15px;
+  padding: 10px;
+  border-width: 1px;
+  border: solid;
+  margin: 5px;
+}
+
+.keywords-4 {
+  background-color: white;
+  color: rgb(13, 13, 92);
+  border-radius: 15px;
+  padding: 10px;
+  border-width: 1px;
+  border: solid;
+  margin: 5px;
+}
+
+.keywords-5 {
+  background-color: white;
+  color: rgb(13, 13, 92);
+  border-radius: 15px;
+  padding: 10px;
+  border-width: 1px;
+  border: solid;
+  margin: 5px;
+}
+
+.keywords-1:focus{
+  background-color: rgb(13, 13, 92);
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.keywords-2:focus {
+  background-color: rgb(13, 13, 92);
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.keywords-3:focus {
+  background-color: rgb(13, 13, 92);
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.keywords-4:focus {
+  background-color: rgb(13, 13, 92);
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.keywords-5:focus {
+  background-color: rgb(13, 13, 92);
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.image-uploader {
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid var(--uploader-border);
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  background-color: var(--uploader-bg);
+  transition: padding 0.50s, background-color 0.3s ease;
+}
+
+.image-uploader:hover {
+  padding: 25px;
+}
+
+
+/* Hide the default file input */
+#imageInput {
+  display: none;
+}
+
+/* Style the custom button */
+.file-label {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.file-label:hover {
+  opacity: 0.8;
+}
+
+#imagePreview {
+  margin-top: 15px;
+  max-width: 300px;
+  max-height: 300px;
+  border: 1px;
+  border-radius: 5px;
+  display: none;
+}
+
+/* START: Dark mode overrides for Bootstrap components */
+body.dark-mode .form-control {
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  border-color: var(--input-border);
+  font-size: 20px;
+}
+
+body.dark-mode .form-control::placeholder {
+  color: #888;
+}
+
+body.dark-mode .form-floating>label {
+  color: #888;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  /* Adds some space around the button */
+}
+
+.Submit-btn {
+  background-color: white;
+    color: rgb(13, 13, 92);
+    border: solid;
+    border-radius: 5px;
+}
+
+.Submit-btn:hover {
+  color: white;
+  background-color: rgb(13, 13, 92);
+
+}
