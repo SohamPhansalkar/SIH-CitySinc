@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Report a Problem</title>
+    <link rel="stylesheet" href="report.css" />
+  </head>
+  <body>
+
+    <!-- Main header section with navigation buttons and title -->
+     
+    <div class="main">
+      <button
+        type="button"
+        class="mainButton"
+        onclick="location.href='../reportProblemScreen/report_step1.html'"
+      >Back</button>
+
+      <div class="title-block">
+        <h1>Report a Problem</h1>
+        <h2>Step 2 of 3: Upload a Photo</h2>
+      </div>
+
+      <button
+        type="button"
+        class="mainButton"
+        onclick="location.href='../reportProblemScreen/report_step3.html'"
+      >Next</button>
+    </div>
+
+    <!-- Upload section with file input -->
+
+    <div class="upload">
+      <label for="file" style="font-size: 25px">UPLOAD PHOTO</label><br />
+      <input type="file" id="realButton" style="display: none" />
+      <button type="button" id="uploadButton">CHOOSE A FILE</button><br /><br />
+      <span id="customText"> No file chosen </span><br /><br />
+      <div id="displayImg"></div>
+    </div>
+
+    <script src="report.js"></script>
+  </body>
+</html>
