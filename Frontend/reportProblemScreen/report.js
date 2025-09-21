@@ -37,3 +37,35 @@ realButton.addEventListener("change", function () {
 
   reader.readAsDataURL(this.files[0]);
 });
+
+// Dropdown functionality
+
+const dropdownItems = document.querySelectorAll(".dropdown-item");
+const selectedUrgencyInput = document.getElementById("selectedUrgency");
+const dropdownButton = document.querySelector(".dropdown-toggle");
+
+dropdownItems.forEach((item) => {
+  item.addEventListener("click", function (e) {
+    e.preventDefault(); // prevent default link behavior
+    const value = this.textContent; // get clicked item text
+    dropdownButton.textContent = value; // update button text
+    selectedUrgencyInput.value = value; // show selection in textbox
+  });
+});
+
+// Submit dialog box
+
+const dialog = document.getElementById("submit-dialog");
+const cancelButton = document.getElementById("cancelButton");
+const confirmButton = document.getElementById("confirmButton");
+
+function showSubmitDialog() {
+  dialog.showModal();
+}
+cancelButton.addEventListener("click", () => {
+  dialog.close();
+});
+confirmButton.addEventListener("click", () => {
+  dialog.close();
+
+});
