@@ -7,78 +7,81 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <br />      
-        <div class="main">
+    <br />
+    <div class="main">
+      <h2>Sign in to CitySync</h2>
+      <br />
 
-        <h2>Sign in to CitySync</h2><br />
+      <!-- username label -->
 
-        <!-- username label -->
+      <label for="nameInp">E-mail address</label>
 
-        <label for="nameInp">Username or email address</label>
+      <!-- username input -->
 
-        <!-- username input -->
+      <input
+        class="nameInp"
+        type="text"
+        name="Name"
+        id="nameInp"
+        placeholder="email address"
+        required
+      />
 
-        <input
-          class="nameInp"
-          type="text"
-          name="Name"
-          id="nameInp"
-          placeholder="Username or email address"
-          required
-        />
+      <br /><br />
 
-        <br /><br />
+      <!-- password label -->
 
-        <!-- password label -->
+      <label for="passInp">Password</label>
 
-        <label for="passInp">Password</label>
+      <!-- password input -->
 
-        <!-- password input -->
+      <input
+        class="nameInp"
+        type="password"
+        name="Password"
+        id="passInp"
+        placeholder="Password"
+        required
+      />
 
-        <input
-          class="nameInp"
-          type="password"
-          name="Password"
-          id="passInp"
-          placeholder="Password"
-          required
-        />
+      <br /><br />
 
-        <br><br>
+      <!-- sign in button  -->
 
-        <!-- sign in button  -->
-        
-        <button
-          type="button"
-          class="signInButton"
-          id="signInButton"
-          onClick="loginClicked();"
-        >
-          Sign in
-        </button>
+      <button
+        type="button"
+        class="signInButton"
+        id="signInButton"
+        onClick="loginClicked();"
+      >
+        Log in
+      </button>
 
-        <h3 id="display"></h3>
+      <h3 id="display"></h3>
 
-        <!-- or part -->
+      <!-- or part -->
 
-        <hr><p>or</p>
+      <hr />
+      <p>or</p>
 
-        <!-- continue with google button -->
+      <!-- continue with google button -->
 
-        <button
-          type="button"
-          class="contWithGoogleButton"
-          id="contWithGoogleButton"
-          onClick="clicked();"
-        >
-          Continue with Google
-        </button>
+      <button
+        type="button"
+        class="contWithGoogleButton"
+        id="contWithGoogleButton"
+        onClick="clicked();"
+      >
+        Continue with Google
+      </button>
 
-        <!-- new to citysync create account button -->
+      <!-- new to citysync create account button -->
 
-        <p>New to CitySync? <a href="../createAccountPage/createAccount.html">Create an account</a></p>
-
-      </div>
+      <p>
+        New to CitySync?
+        <a href="../createAccountPage/createAccount.html">Create an account</a>
+      </p>
+    </div>
 
     <script src="script.js"></script>
 
@@ -87,6 +90,5 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
-    
   </body>
 </html>

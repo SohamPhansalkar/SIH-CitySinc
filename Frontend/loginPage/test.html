@@ -5,7 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    <br />      
-        <h1> Hello World!</h1>
+    <br />
+    <h1 id="h1Test">Hello World!</h1>
+    <button type="button" onclick="logout();">Logout</button>
+    <script>
+      window.addEventListener("load", function () {
+        document.getElementById("h1Test").innerText =
+          "Hello " +
+          sessionStorage.getItem("userName") +
+          " Your email is " +
+          sessionStorage.getItem("email");
+      });
+
+      function logout() {
+        sessionStorage.removeItem("userName");
+        sessionStorage.removeItem("email");
+        window.location.href = "index.html";
+      }
+
+      if (sessionStorage.getItem("userName") === null) {
+        window.location.href = "index.html";
+      }
+    </script>
   </body>
 </html>
