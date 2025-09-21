@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "SIH project",
+  "keywords": [
+    "SIH",
+    "node.js",
+    "express",
+    "website"
+  ],
+  "homepage": "https://github.com/SohamPhansalkar/SIH-CitySinc/tree/main#readme",
+  "bugs": {
+    "url": "https://github.com/SohamPhansalkar/SIH-CitySinc/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SohamPhansalkar/SIH-CitySinc.git#main"
+  },
+  "license": "ISC",
+  "author": "CitySync Team",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node  index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongodb": "^6.20.0",
+    "mongoose": "^8.18.1",
+    "throw": "^1.1.1"
+  }
+}
