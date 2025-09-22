@@ -9,7 +9,6 @@ async function loginClicked() {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
-    
 
     const data = await response.json();
     console.log("✅ User fetched:", data);
@@ -30,7 +29,7 @@ async function loginClicked() {
     sessionStorage.setItem("email", data._id);
 
     // Redirect
-    window.location.href = "test.html";
+    window.location.href = "../TanmayFrontend/test.html";
   } catch (err) {
     console.error("❌ Error logging in:", err);
     alert("Server error");
