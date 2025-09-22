@@ -1,8 +1,8 @@
 const express = require("express"); // For API server
 const mongoose = require("mongoose"); // For MongoDB connection and schema
 const cors = require("cors"); // To connect front-end to back-end
-const multer = require("multer"); // to receive images
-const path = require("path"); // for handling file paths
+const multer = require("multer"); // To receive images
+const path = require("path"); // For handling file paths
 
 const app = express();
 app.use(cors());
@@ -11,6 +11,7 @@ app.use(express.json());
 const DBUserID = "admin";
 const DBPassword = "admin";
 const Port = 3000;
+const PyAPI = "http://localhost:2000";
 
 // 1. Connect to MongoDB
 mongoose
@@ -45,7 +46,7 @@ app.get("/listUsers", async (req, res) => {
   res.json(users);
 });
 
-// Get a user by userName (using query param eg - ?id=test123@gmail.com)
+// Get a user by email (query param: ?id=test123@gmail.com)
 app.get("/getUser", async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.query.id });
@@ -65,12 +66,12 @@ app.post("/addUser", async (req, res) => {
   res.json(user);
 });
 
+// Multer config for storing images
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "..\\static\\images"); // Folder where files will be stored
+    cb(null, path.join(__dirname, "../static/images")); // use absolute path
   },
   filename: (req, file, cb) => {
-    // Save with original filename + timestamp to avoid collisions
     const uniqueName = Date.now() + "-" + file.originalname;
     cb(null, uniqueName);
   },
@@ -79,22 +80,48 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // ✅ Upload route
-app.post("/upload", upload.single("image"), (req, res) => {
+app.post("/upload", upload.single("image"), async (req, res) => {
   try {
     console.log("✅ File uploaded:", req.file);
 
-    // Respond with file path
+    const fileName = req.file.filename;
+    const filePath = "/images/" + fileName;
+
+    // Send image info to Python AI server
+    const response = await fetch(PyAPI + "/validate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "API-Key": "CITYSYNC-AI",
+      },
+      body: JSON.stringify({
+        image_path: fileName, // actual uploaded filename
+        description: "test dec",
+      }),
+    });
+
+    let aiResult = {};
+    try {
+      aiResult = await response.json();
+    } catch {
+      aiResult = { error: "Invalid response from AI server" };
+    }
+
+    // Respond to frontend
     res.json({
       message: "Image uploaded successfully",
-      filePath: "/images/" + req.file.filename,
+      fileName: fileName,
+      filePath: filePath,
+      aiResult: aiResult,
     });
   } catch (err) {
+    console.error("❌ Upload failed:", err);
     res.status(500).json({ error: "Upload failed" });
   }
 });
 
 // ✅ Serve images folder as static
-app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/images", express.static(path.join(__dirname, "../static/images")));
 
 // 4. Start server
 app.listen(Port, () => {
