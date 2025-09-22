@@ -181,26 +181,3 @@ def match_keywords_to_department(cleaned_text):
                 best_match_department = department
 
     return best_match_issue, best_match_department
-
-
-# Static image path - CHANGE THIS TO YOUR IMAGE NAME
-image_path = input("Enter the path of the image:")
-
-# Ask user for description
-description = input("Enter your description of the image: ")
-
-# Process
-caption, similarity, cleaned_text = validate_image(image_path, description)
-
-# Match keywords to department
-best_match_issue, best_match_department = match_keywords_to_department(cleaned_text)
-
-# Show results in proper format
-print("\n--- Validation Results ---")
-print(f"AI Generated Caption : {caption}")
-print(f"User Description     : {description}")
-print(f"Similarity Score     : {similarity:.3f}")
-print(f"Status               : {'ACCEPTED ✅' if similarity >= 0.6 else 'REJECTED ❌'}")
-if(similarity >= 0.6):
-  print(f"Predicted Issue      : {best_match_issue}")
-  print(f"Assigned Department  : {best_match_department}")
