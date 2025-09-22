@@ -1,6 +1,8 @@
 const express = require("express"); // For API server
 const mongoose = require("mongoose"); // For MongoDB connection and schema
 const cors = require("cors"); // To connect front-end to back-end
+const multer = require("multer"); // to receive images
+const path = require("path"); // for handling file paths
 
 const app = express();
 app.use(cors());
@@ -62,7 +64,37 @@ app.post("/addUser", async (req, res) => {
   await user.save();
   res.json(user);
 });
-// url-python app.route
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "..\\static\\images"); // Folder where files will be stored
+  },
+  filename: (req, file, cb) => {
+    // Save with original filename + timestamp to avoid collisions
+    const uniqueName = Date.now() + "-" + file.originalname;
+    cb(null, uniqueName);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+// ✅ Upload route
+app.post("/upload", upload.single("image"), (req, res) => {
+  try {
+    console.log("✅ File uploaded:", req.file);
+
+    // Respond with file path
+    res.json({
+      message: "Image uploaded successfully",
+      filePath: "/images/" + req.file.filename,
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Upload failed" });
+  }
+});
+
+// ✅ Serve images folder as static
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 // 4. Start server
 app.listen(Port, () => {
