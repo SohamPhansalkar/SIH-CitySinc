@@ -1,50 +1,50 @@
 // script.js
+const APIUrl = "http://localhost:3000"; // Change this to your backend URL if needed
 
 // ------- START: Theme Toggle Logic -------
-const themeToggle = document.getElementById('theme-toggle');
+const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
 
 // Function to set the theme and button icon
 function setTheme(theme) {
-  if (theme === 'dark') {
-    body.classList.add('dark-mode');
-    themeToggle.textContent = '🌙'; // Moon icon for dark mode
+  if (theme === "dark") {
+    body.classList.add("dark-mode");
+    themeToggle.textContent = "🌙"; // Moon icon for dark mode
   } else {
-    body.classList.remove('dark-mode');
-    themeToggle.textContent = '☀️'; // Sun icon for light mode
+    body.classList.remove("dark-mode");
+    themeToggle.textContent = "☀️"; // Sun icon for light mode
   }
 }
 
 // Check for a saved theme in localStorage and apply it
-const savedTheme = localStorage.getItem('theme');
+const savedTheme = localStorage.getItem("theme");
 if (savedTheme) {
   setTheme(savedTheme);
 } else {
   // Default to light mode if nothing is saved
-  setTheme('light');
+  setTheme("light");
 }
 
 // Add an event listener to the toggle button
-themeToggle.addEventListener('click', () => {
+themeToggle.addEventListener("click", () => {
   let newTheme;
-  if (body.classList.contains('dark-mode')) {
-    newTheme = 'light';
+  if (body.classList.contains("dark-mode")) {
+    newTheme = "light";
   } else {
-    newTheme = 'dark';
+    newTheme = "dark";
   }
   setTheme(newTheme);
   // Save the new theme preference to localStorage
-  localStorage.setItem('theme', newTheme);
+  localStorage.setItem("theme", newTheme);
 });
 // ------- END: Theme Toggle Logic -------
 
-
-// ------- START: Image Uploader Logic (Unchanged) -------
-const imageInput = document.getElementById('imageInput');
-const imagePreview = document.getElementById('imagePreview');
+// ------- START: Image Uploader Logic -------
+const imageInput = document.getElementById("imageInput");
+const imagePreview = document.getElementById("imagePreview");
 
 // Add an event listener to the file input
-imageInput.addEventListener('change', function () {
+imageInput.addEventListener("change", function () {
   // Check if the user has selected a file
   if (this.files && this.files[0]) {
     const reader = new FileReader();
@@ -54,11 +54,29 @@ imageInput.addEventListener('change', function () {
       // Set the 'src' of the image to the result of the FileReader
       imagePreview.src = e.target.result;
       // Make the image preview visible
-      imagePreview.style.display = 'block';
+      imagePreview.style.display = "block";
     };
 
     // Read the file as a Data URL, which is a base64 encoded string
     reader.readAsDataURL(this.files[0]);
+
+    // --- Send image to backend ---
+    const formData = new FormData();
+    formData.append("image", this.files[0]); // 'image' is the field name
+
+    fetch(APIUrl + "/upload", {
+      // Change URL to your backend endpoint
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        // Handle response from backend
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    // --- End send image to backend ---
   }
 });
-// ------- END: Image Uploader Logic (Unchanged) -------
