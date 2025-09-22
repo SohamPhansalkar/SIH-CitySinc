@@ -1,82 +1,51 @@
-// script.js
-const APIUrl = "http://localhost:3000"; // Change this to your backend URL if needed
-
-// ------- START: Theme Toggle Logic -------
-const themeToggle = document.getElementById("theme-toggle");
-const body = document.body;
-
-// Function to set the theme and button icon
-function setTheme(theme) {
-  if (theme === "dark") {
-    body.classList.add("dark-mode");
-    themeToggle.textContent = "🌙"; // Moon icon for dark mode
-  } else {
-    body.classList.remove("dark-mode");
-    themeToggle.textContent = "☀️"; // Sun icon for light mode
-  }
+// Fetch States & Districts from CoWIN API
+async function fetchStates() {
+  const res = await fetch(
+    "https://cdn-api.co-vin.in/api/v2/admin/location/states",
+    {
+      headers: { "User-Agent": "Mozilla/5.0" },
+    }
+  );
+  const data = await res.json();
+  const stateDropdown = document.getElementById("stateDropdown");
+  data.states.forEach((state) => {
+    const option = document.createElement("option");
+    option.value = state.state_id;
+    option.textContent = state.state_name;
+    stateDropdown.appendChild(option);
+  });
 }
 
-// Check for a saved theme in localStorage and apply it
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme) {
-  setTheme(savedTheme);
-} else {
-  // Default to light mode if nothing is saved
-  setTheme("light");
+async function fetchDistricts(stateId) {
+  const res = await fetch(
+    `https://cdn-api.co-vin.in/api/v2/admin/location/districts/${stateId}`,
+    {
+      headers: { "User-Agent": "Mozilla/5.0" },
+    }
+  );
+  const data = await res.json();
+  const districtDropdown = document.getElementById("districtDropdown");
+  districtDropdown.innerHTML = '<option value="">Select District</option>';
+  data.districts.forEach((district) => {
+    const option = document.createElement("option");
+    option.value = district.district_id;
+    option.textContent = district.district_name;
+    districtDropdown.appendChild(option);
+  });
 }
 
-// Add an event listener to the toggle button
-themeToggle.addEventListener("click", () => {
-  let newTheme;
-  if (body.classList.contains("dark-mode")) {
-    newTheme = "light";
+const stateDropdown = document.getElementById("stateDropdown");
+const districtDropdown = document.getElementById("districtDropdown");
+
+stateDropdown.addEventListener("change", function () {
+  if (this.value) {
+    districtDropdown.disabled = false;
+    fetchDistricts(this.value);
   } else {
-    newTheme = "dark";
-  }
-  setTheme(newTheme);
-  // Save the new theme preference to localStorage
-  localStorage.setItem("theme", newTheme);
-});
-// ------- END: Theme Toggle Logic -------
-
-// ------- START: Image Uploader Logic -------
-const imageInput = document.getElementById("imageInput");
-const imagePreview = document.getElementById("imagePreview");
-
-// Add an event listener to the file input
-imageInput.addEventListener("change", function () {
-  // Check if the user has selected a file
-  if (this.files && this.files[0]) {
-    const reader = new FileReader();
-
-    // FileReader is asynchronous, so we listen for it to load
-    reader.onload = function (e) {
-      // Set the 'src' of the image to the result of the FileReader
-      imagePreview.src = e.target.result;
-      // Make the image preview visible
-      imagePreview.style.display = "block";
-    };
-
-    // Read the file as a Data URL, which is a base64 encoded string
-    reader.readAsDataURL(this.files[0]);
-
-    // --- Send image to backend ---
-    const formData = new FormData();
-    formData.append("image", this.files[0]); // 'image' is the field name
-
-    fetch(APIUrl + "/upload", {
-      // Change URL to your backend endpoint
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        // Handle response from backend
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-    // --- End send image to backend ---
+    districtDropdown.disabled = true;
   }
 });
+
+fetchStates();
+
+// (Duplicate code removed to fix redeclaration error)

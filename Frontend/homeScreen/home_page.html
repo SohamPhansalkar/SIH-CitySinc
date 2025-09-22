@@ -4,78 +4,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sync City</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <title>City Sync</title>
   <link rel="stylesheet" href="home_page.css">
-
-  <script type="text/javascript"
-    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
 <body>
-  <p class="title"> CITY SYNC <br> </p>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <p class="navbar-brand">City Sync</p>
+    <p class="subtitle">Smart City Complaint Portal</p>
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link navButton active" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link navButton" href="#">Report a Problem</a></li>
+      <li class="nav-item"><a class="nav-link navButton" href="#">My Reports</a></li>
+      <li class="nav-item"><a class="nav-link navButton" href="#">My Feedback</a></li>
+    </ul>
+  </nav>
 
-  <p class="description"> Here to help! </p>
+<!-- Main content: Cards left, Dropdowns right -->
+<div class="content-container">
+  <!-- Cards -->
+  <div class="card-grid">
+  <button class="card" onclick="location.href='../reportProblemScreen/report_step1.html'">
+    <h5 class="card-title">Post a Complaint</h5>
+  </button>
+  <button class="card" disabled>
+    <h5 class="card-title">History</h5>
+  </button>
+  <button class="card" disabled>
+    <h5 class="card-title">Provide Feedback</h5>
+  </button>
+  <button class="card" disabled>
+    <h5 class="card-title">Profile</h5>
+  </button>
+</div>
 
-  <img src="home_page.png" class="images-1">
+  <!-- State & District Dropdowns -->
+  <div class="dropdown-container">
+    <div>
+      <label for="stateDropdown">State</label>
+      <select id="stateDropdown">
+        <option value="">Select State</option>
+      </select>
+    </div>
 
-  <div class="theme-toggle-container">
-    <button id="theme-toggle"> </button>
-
-    <div id="google_translate_element" style="display: inline-block; vertical-align: middle; margin-left: 10px;"></div>
-  </div>
-
-  <p class="user-info"> User Details </p>
-  <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput">
-    <label for="floatingInput"> Username </label>
-  </div>
-  <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput">
-    <label for="floatingInput"> State </label>
-  </div>
-  <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput">
-    <label for="floatingInput"> District </label>
-  </div>
-  <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput">
-    <label for="floatingInput"> Pincode </label>
-  </div>
-
-  <img src="essential_workers.png" class="images-1">
-  <p class="user-info"> keywords </p>
-  <div class="key-btn">
-    <button class="keywords-1"> Potholes </button>
-    <button class="keywords-2"> Hazardous Waste </button>
-    <button class="keywords-3"> Waste Disposal </button>
-    <button class="keywords-4"> Sewage Clogging </button>
-    <button class="keywords-5"> Electrical Components </button>
-  </div>
-
-  <p class="user-info"> Photo Upload </p>
-  <div class="image-uploader">
-    <input type="file" id="imageInput" accept="image/*">
-    <label for="imageInput" class="file-label">Choose a File</label>
-    <img id="imagePreview" src="#" alt="Your image will appear here" />
-  </div>
-
-  <p class="user-info"> Comment </p>
-  <div class="form-floating">
-    <textarea class="form-control" id="floatingTextarea2"
-      style="height: 100px"></textarea>
-    <label for="floatingTextarea2">Comments</label>
-  </div>
-
-  <div class="button-container">
-    <div class="Submit-btn">
-      <button> Submit </button>
+    <div>
+      <label for="districtDropdown">District</label>
+      <select id="districtDropdown" disabled>
+        <option value="">Select District</option>
+      </select>
     </div>
   </div>
+</div>
 
   <script src="script.js"></script>
-  <script src="translate.js"></script>
 </body>
 
 </html>
