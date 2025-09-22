@@ -1,77 +1,97 @@
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 5px;
+  align-items: flex-start; /* start from top, but not flush */
+  min-height: 100vh;
+  margin: 0;
   background-color: #f4f4f4;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  padding-top: 50px; /* space from top */
 }
 
 .main {
-  border-radius: 10px;
-  height: auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 30px 25px; /* less padding */
   width: 400px;
-  padding: 20px;
-  background-color: #e6e7e8;
-  justify-content: center;
   text-align: center;
-  font-family: "Times New Roman", Times, serif;
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* tighter spacing between elements */
 }
 
-.nameInp {
-  width: 90%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.signInButton {
-  background-color: #4caf50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 95%;
-}
-
-.signInButton:hover {
-  background-color: #45a049;
-}
-
-.contWithGoogleButton {
-  background-color: #4285f4;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 95%;
-}
-
-.contWithGoogleButton:hover {
-  background-color: #357ae8;
-}
-
-hr {
-  border: 1px solid #ccc;
-  margin: 20px 0;
+.main h2 {
+  margin-bottom: 10px;
 }
 
 label {
-  font-weight: bold;
-  font-family: "Times New Roman", Times, serif;
-  display: block;
-  text-align: left;
-  margin-bottom: 5px;
-  margin-left: 25px;
+  font-size: 16px;
+  margin-bottom: 4px;
 }
 
-button {
-  font-size: 16px;
+.nameInp {
+  width: 100%;
+  padding: 10px 15px; /* slightly smaller inputs */
+  border-radius: 8px;
+  font-size: 15px;
 }
+
+
+label {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 5px;
+}
+
+.nameInp {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.nameInp:focus {
+  outline: none;
+  border-color: rgb(13, 13, 92);
+  box-shadow: 0 0 8px rgba(13, 13, 92, 0.3);
+}
+
+.signInButton,
+.contWithGoogleButton {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(13, 13, 92, 0.2);
+  width: 100%;
+}
+
+.signInButton {
+  background: linear-gradient(135deg, rgb(13, 13, 92), rgb(41, 41, 153));
+}
+
+.signInButton:hover {
+  background: linear-gradient(135deg, rgb(41, 41, 153), rgb(79, 79, 201));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(13, 13, 92, 0.35);
+}
+
+.contWithGoogleButton {
+  background: linear-gradient(135deg, #4285f4, #357ae8);
+}
+
+.contWithGoogleButton:hover {
+  background: linear-gradient(135deg, #357ae8, #2a65c7);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(13, 13, 92, 0.25);
+}
+
