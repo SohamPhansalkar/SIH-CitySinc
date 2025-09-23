@@ -1,0 +1,305 @@
+/* --- CSS Variables for Theming --- */
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --background-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --text-color: #343a40;
+  --text-light: #6c757d;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Generic Styling --- */
+body {
+  margin: 0;
+  padding: 0 0 100px 0;
+  /* Add padding to bottom to prevent content being hidden by nav */
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* --- Header --- */
+.main {
+  display: flex;
+  justify-content: center;
+  /* Center the title block */
+  align-items: center;
+  padding: 20px 40px;
+  background-color: var(--card-bg);
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.title-block {
+  text-align: center;
+}
+
+.title-block h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.title-block h2 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 4px;
+  color: var(--text-light);
+}
+
+/* --- Bottom Page Navigation --- */
+.page-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 40px;
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.07);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+/* --- Main Buttons --- */
+.mainButton {
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  transition: all 0.2s ease;
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.mainButton:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.mainButton.back-btn {
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+.mainButton.back-btn:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+  color: var(--primary-hover);
+  box-shadow: none;
+}
+
+/* --- Progress Bar --- */
+.progress {
+  height: 12px;
+  background-color: #e9ecef;
+  border-radius: 6px;
+  margin: 40px auto;
+  max-width: 700px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 6px;
+}
+
+/* --- Category Selection --- */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 25px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
+}
+
+.category-card.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-color: var(--primary-color);
+}
+
+/* --- Step 2 & 3 Content Styling --- */
+.step-container,
+.summary-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 40px;
+}
+
+.card,
+.summary-container {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 30px;
+  border: 1px solid var(--border-color);
+}
+
+.step-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1 1 400px;
+}
+
+.card h3,
+.summary-container h3 {
+  margin-top: 0;
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.upload-area {
+  border: 2px dashed var(--border-color);
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.upload-area:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(0, 123, 255, 0.05);
+}
+
+.upload-area span {
+  font-size: 16px;
+  color: var(--text-light);
+  display: block;
+}
+
+#customText {
+  font-size: 14px;
+  color: var(--text-light);
+  word-break: break-all;
+  margin-top: 15px;
+  min-height: 20px;
+}
+
+#displayImg {
+  display: none;
+  width: 100%;
+  height: 250px;
+  border-radius: 12px;
+  margin-top: 20px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--border-color);
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.form-group input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+.summary-container {
+  max-width: 800px;
+  margin-top: 40px;
+}
+
+.summary-item {
+  margin-bottom: 20px;
+}
+
+.summary-item strong {
+  display: block;
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-item p {
+  font-size: 18px;
+  margin: 0;
+}
+
+#summary-image-preview {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  margin-top: 5px;
+  border: 1px solid var(--border-color);
+}
+
+/* --- Validation Warning Styling --- */
+.warning-text {
+  color: #dc3545;
+  /* A standard Bootstrap danger red */
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 10px;
+  display: none;
+  /* Hidden by default */
+}
+
+.upload-area.has-error {
+  border-color: #dc3545;
+  border-style: solid;
+  /* Make the border solid to be more prominent */
+  background-color: rgba(220, 53, 69, 0.05);
+}

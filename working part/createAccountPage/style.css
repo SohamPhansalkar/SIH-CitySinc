@@ -1,0 +1,77 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 10px;
+  background-color: #f4f4f4;
+}
+
+.main {
+  border-radius: 10px;
+  height: auto;
+  width: 400px;
+  padding: 20px;
+  background-color: #e6e7e8;
+  justify-content: center;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.nameInp {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.createAccButton {
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 95%;
+}
+
+.createAccButton:hover {
+  background-color: #45a049;
+}
+
+.contWithGoogleButton {
+  background-color: #4285f4;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 95%;
+}
+
+.contWithGoogleButton:hover {
+  background-color: #357ae8;
+}
+
+hr {
+  border: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+label {
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  margin-left: 25px;
+}
+
+button {
+  font-size: 16px;
+}
