@@ -1,0 +1,251 @@
+/* This part is the styling for working home screen */
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #f5f6fa;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 5%;
+  background: linear-gradient(135deg, #007bff 80%, #0056b3 100%);
+  color: #ffffff;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border-bottom: 2px solid #007bff;
+  border-radius: 6px 6px 0 0;
+}
+
+/* Navbar main title */
+.navbar .navbar-brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: "Poppins", "Segoe UI", Roboto, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar subtitle */
+.navbar .subtitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #cfd4ff;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* Navbar menu links */
+.navbar .navbar-nav {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+/* Navbar hover effect */
+.navbar:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar buttons */
+.navButton {
+  padding: 10px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0d0d5c;
+  background-color: #ffffff;
+  border: 1px solid #b3b3ff;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Navbar button hover */
+.navButton:hover,
+.navButton.active {
+  background-color: #e6e6ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Main page content container */
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+  padding: 80px 5%;
+  flex-wrap: wrap;
+}
+
+/* Grid for cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 600px;
+}
+
+/* Card style */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  padding: 48px 28px;
+  aspect-ratio: 1 / 1;
+  min-width: 220px;
+  min-height: 220px;
+  font-size: 19px;
+  border: 1px solid #e6e8f3;
+}
+
+/* Card hover effect */
+.card:hover {
+  background: linear-gradient(135deg,#1f83ed 80%, #0e4a89 100%);
+  color: #ffffff;
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 32px rgba(13, 13, 92, 0.18);
+  border-color: #0056b3;
+}
+
+/* Card title text */
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 1px;
+  color: inherit;
+}
+
+/* Dropdown container */
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individual dropdown box */
+.dropdown-container > div {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 40px 25px;
+  min-width: 200px;
+}
+
+/* Dropdown label */
+.dropdown-container label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Dropdown select box */
+.dropdown-container select {
+  padding: 14px 18px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #0056b3 80%, #007bff 100%);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(13, 13, 92, 0.3);
+}
+
+/* Dropdown hover/focus effect */
+.dropdown-container select:hover,
+.dropdown-container select:focus {
+  box-shadow: 0 6px 16px rgba(13, 13, 92, 0.35);
+  outline: none;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 5%;
+  }
+
+  .navbar .navbar-brand {
+    position: static;
+    transform: none;
+    margin: 10px 0;
+    font-size: 28px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .navButton {
+    width: 100%;
+    text-align: center;
+  }
+
+  .content-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 5%;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .card {
+    aspect-ratio: 1 / 1;
+    min-width: 160px;
+    min-height: 160px;
+    padding: 28px 10px;
+    font-size: 16px;
+  }
+
+  .dropdown-container {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .dropdown-container > div {
+    width: auto;
+    min-width: 150px;
+  }
+}
