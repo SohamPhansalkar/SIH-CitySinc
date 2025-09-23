@@ -14,16 +14,12 @@
       <p class="subtitle">Smart City Complaint Portal</p>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link navButton active" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link navButton" href="#">Report a Problem</a>
+          <a class="nav-link navButton" href="../TanmayFrontend/test.html"
+            >Report a Problem</a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link navButton" href="#">My Reports</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link navButton" href="#">My Feedback</a>
         </li>
       </ul>
     </nav>
@@ -33,17 +29,20 @@
       <!-- Cards -->
       <div class="card-grid">
         <button
-          class="card"
-          onclick="location.href='../reportProblemScreen/report_step1.html'"
+          class="card cardHover"
+          onclick="location.href='../TanmayFrontend/test.html'"
         >
           <h5 class="card-title">Post a Complaint</h5>
         </button>
-        <button class="card" disabled>
+
+        <button class="card cardHover">
           <h5 class="card-title">History</h5>
         </button>
+
         <button class="card" disabled>
           <h5 class="card-title">Provide Feedback</h5>
         </button>
+
         <button class="card" disabled>
           <h5 class="card-title">Profile</h5>
         </button>
@@ -54,14 +53,14 @@
         <div>
           <label for="stateDropdown">State</label>
           <select id="stateDropdown">
-            <option value="">Select State</option>
+            <option value="maharashtra">Maharashtra</option>
           </select>
         </div>
 
         <div>
-          <label for="districtDropdown">District</label>
-          <select id="districtDropdown" disabled>
-            <option value="">Select District</option>
+          <label for="districtDropdown">Area</label>
+          <select id="districtDropdown">
+            <option value="">Sus</option>
           </select>
         </div>
       </div>

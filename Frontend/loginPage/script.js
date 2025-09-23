@@ -4,6 +4,11 @@ async function loginClicked() {
   const userName = document.getElementById("nameInp").value;
   const password = document.getElementById("passInp").value;
 
+  if (!userName || !password) {
+    alert("Please enter both email and password");
+    return;
+  }
+
   try {
     const response = await fetch(serverUrl + "/getUser?id=" + userName, {
       method: "GET",
@@ -29,7 +34,7 @@ async function loginClicked() {
     sessionStorage.setItem("email", data._id);
 
     // Redirect
-    window.location.href = "../TanmayFrontend/test.html";
+    window.location.href = "../homeScreen/home_page.html";
   } catch (err) {
     console.error("❌ Error logging in:", err);
     alert("Server error");

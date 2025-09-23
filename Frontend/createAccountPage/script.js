@@ -1,5 +1,3 @@
-// import { setUserName, getUserName, setEmail, getEmail } from "../data.js";
-
 const serverUrl = "http://localhost:3000";
 
 document
@@ -14,6 +12,11 @@ async function createAccClicked() {
   const username = document.getElementById("nameInp").value;
   const email = document.getElementById("emailInp").value;
   const password = document.getElementById("passInp").value;
+
+  if (!username || !email || !password) {
+    alert("Please fill all the fields.");
+    return;
+  }
 
   try {
     const response = await fetch(serverUrl + "/addUser", {
@@ -34,8 +37,9 @@ async function createAccClicked() {
     console.log("Session Storage:", sessionStorage);
 
     // redirect after successful save
-    window.location.href = "../loginPage/test.html";
+    window.location.href = "../homeScreen/home_page.html";
   } catch (err) {
     console.error("❌ Error creating account:", err);
+    alert("Error creating account. Please try again.");
   }
 }

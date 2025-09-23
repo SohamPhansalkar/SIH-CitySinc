@@ -118,7 +118,8 @@
             });
             const data = await res.json();
             console.log("✅ Upload response:", data);
-            alert("Upload successful! Check console for details.");
+            //alert("Upload successful! Check console for details.");
+            window.location.href = "../homeScreen/reportSubmitted.html";
           } catch (err) {
             console.error("❌ Upload failed:", err);
             alert("Upload failed! Check console for details.");
