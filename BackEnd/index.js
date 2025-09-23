@@ -3,6 +3,7 @@ const mongoose = require("mongoose"); // For MongoDB connection and schema
 const cors = require("cors"); // To connect front-end to back-end
 const multer = require("multer"); // To receive images
 const path = require("path"); // For handling file paths
+const nodemailer = require("nodemailer"); // For sending emails
 
 const app = express();
 app.use(cors());
@@ -37,6 +38,54 @@ const UserSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("User", UserSchema);
+
+async function sendEmail(
+  email,
+  subject,
+  text = null,
+  html = null,
+  imgPath = null
+) {
+  try {
+    // Generate 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 900000);
+
+    // Create transporter
+    let transporter = nodemailer.createTransport({
+      host: "smtp.zoho.in", // For Indian domain, use smtp.zoho.in
+      port: 465, // SSL
+      secure: true,
+      auth: {
+        user: "phansalkar.shoham@zohomail.in", // your email
+        pass: "5x75uHZr0F0c", // app password / smtp password
+      },
+    });
+
+    // Mail options
+    let mailOptions = {
+      from: '"CitySync" phansalkar.shoham@zohomail.in',
+      to: email,
+      subject: subject,
+      text: text,
+      html: html,
+      attachments: [
+        {
+          //filename: imgPath, // image path
+          path: imgPath,
+        },
+      ],
+    };
+
+    // Send email
+    await transporter.sendMail(mailOptions);
+
+    console.log("mail sent:", email);
+    return otp; // return OTP so you can save it in DB/session for verification
+  } catch (error) {
+    console.error("Error sending mail:", error);
+    return null;
+  }
+}
 
 // 3. API Routes
 
@@ -96,13 +145,23 @@ app.post("/upload", upload.single("image"), async (req, res) => {
       },
       body: JSON.stringify({
         image_path: fileName, // actual uploaded filename
-        description: "test dec",
+        description: "Pothole on street",
       }),
     });
 
     let aiResult = {};
     try {
       aiResult = await response.json();
+      console.log("✅ AI server response:", aiResult);
+      sendEmail(
+        "goofballs115@gmail.com",
+        "New Complaint Registered",
+        "-",
+        `<p>A new complaint has been registered with the following details:<br><br>Result: ${JSON.stringify(
+          aiResult
+        )}</p>`,
+        "../static/" + filePath
+      );
     } catch {
       aiResult = { error: "Invalid response from AI server" };
     }
