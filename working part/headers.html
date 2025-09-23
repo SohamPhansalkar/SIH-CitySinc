@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>City Problems — Table</title>
+  <style>
+
+    :root{
+      --bg: #f5f6fa;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #0f172a; 
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+      --shadow: 0 8px 20px rgba(15,23,42,0.08);
+    }
+
+    *{box-sizing: border-box;}
+    body{
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--accent);
+      padding: 32px;
+    }
+
+    .container{
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card{
+      background: var(--card);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    h1{
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    p.lead{
+      color: var(--muted);
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      background: transparent;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    thead tr{
+      background: linear-gradient(90deg, rgba(15,23,42,0.05), rgba(15,23,42,0.02));
+    }
+
+    th, td{
+      text-align: left;
+      padding: 14px 16px;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(15,23,42,0.04);
+    }
+
+    th{
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+    }
+
+    tbody tr:hover{
+      background: rgba(15,23,42,0.02);
+    }
+
+    .severity{
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 12px;
+      color: white;
+    }
+
+    .high{ background: var(--red); }
+    .medium{ background: var(--yellow); color: black; }
+    .low{ background: var(--green); }
+
+    @media (max-width:600px){
+      th, td{ padding: 10px; font-size:13px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Reported Problems</h1>
+      <p class="lead">Hard-coded sample entries — replace with dynamic data when ready.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Problem Type</th>
+            <th>Location</th>
+            <th>Severity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pothole</td>
+            <td>MG Road, Pune</td>
+            <td><span class="severity high">High</span></td>
+          </tr>
+          <tr>
+            <td>Pothole</td>
+            <td>Brindavan Colony, Bangalore</td>
+            <td><span class="severity medium">Medium</span></td>
+          </tr>
+          <tr>
+            <td>Pothole</td>
+            <td>Marine Drive, Mumbai</td>
+            <td><span class="severity low">Low</span></td>
+          </tr>
+          <tr>
+            <td>Pothole</td>
+            <td>Sector 17, Chandigarh</td>
+            <td><span class="severity medium">Medium</span></td>
+          </tr>
+          <tr>
+            <td>Pothole</td>
+            <td>Old Goa Road, Goa</td>
+            <td><span class="severity high">High</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

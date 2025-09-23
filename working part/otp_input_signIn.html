@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CitySync Login Page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <br />
+    <div class="main">
+      <h2>Sign in to CitySync</h2>
+      <br />
+
+      <!-- username label -->
+      <label for="nameInp">E-mail address</label>
+
+      <!-- username input -->
+      <input
+        class="nameInp"
+        type="text"
+        name="Name"
+        id="nameInp"
+        placeholder="email address"
+        required
+      />
+
+      <br /><br />
+
+      <!-- password label -->
+      <label for="passInp">Password</label>
+
+      <!-- password input -->
+      <input
+        class="nameInp"
+        type="password"
+        name="Password"
+        id="passInp"
+        placeholder="Password"
+        required
+      />
+
+      <br /><br />
+
+      <!-- OTP label -->
+      <label for="otpInp">OTP</label>
+
+      <!-- OTP input -->
+      <input
+        class="nameInp"
+        type="text"
+        name="otp"
+        id="otpInp"
+        placeholder="Enter OTP"
+        maxlength="6"
+        required
+      />
+
+      <br /><br />
+
+      <!-- sign in button  -->
+      <button
+        type="button"
+        class="signInButton"
+        id="signInButton"
+        onClick="loginClicked();"
+      >
+        Log in
+      </button>
+
+      <!-- or part -->
+      <p>or</p>
+
+      <!-- continue with google button -->
+      <button
+        type="button"
+        class="contWithGoogleButton"
+        id="contWithGoogleButton"
+        onClick="clicked();"
+      >
+        Continue with Google
+      </button>
+
+      <!-- new to citysync create account button -->
+      <p>
+        New to CitySync?
+        <a href="../createAccountPage/createAccount.html">Create an account</a>
+      </p>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
