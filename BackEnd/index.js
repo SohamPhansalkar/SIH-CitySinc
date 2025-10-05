@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 const DBUserID = "admin";
-const DBPassword = "admin";
+const DBPassword = "---";
 const Port = 3000;
 const PyAPI = "http://localhost:2000";
 
@@ -186,3 +186,4 @@ app.use("/images", express.static(path.join(__dirname, "../static/images")));
 app.listen(Port, () => {
   console.log("🚀 Server running on http://localhost:" + Port);
 });
+
